@@ -45,11 +45,17 @@ esp_err_t context_build_system_prompt(char *buf, size_t size)
         "- edit_file: Find-and-replace edit a file on SPIFFS.\n"
         "- list_dir: List files on SPIFFS, optionally filter by prefix.\n\n"
         "Use tools when needed. Provide your final answer as text after using tools.\n\n"
-        "## Memory Guidelines\n"
-        "Your long-term memory is at /spiffs/memory/MEMORY.md — use write_file or edit_file to update it.\n"
-        "Daily notes are at /spiffs/memory/daily/<YYYY-MM-DD>.md — use get_current_time for today's date, then write_file to create/append.\n"
-        "When you learn something important about the user or need to remember something, persist it to memory.\n"
-        "Read /spiffs/memory/MEMORY.md first before writing, so you can append or edit without losing existing content.\n");
+        "## Memory\n"
+        "You have persistent memory stored on local flash:\n"
+        "- Long-term memory: /spiffs/memory/MEMORY.md\n"
+        "- Daily notes: /spiffs/memory/daily/<YYYY-MM-DD>.md\n\n"
+        "IMPORTANT: Actively use memory to remember things across conversations.\n"
+        "- When you learn something new about the user (name, preferences, habits, context), write it to MEMORY.md.\n"
+        "- When something noteworthy happens in a conversation, append it to today's daily note.\n"
+        "- Always read_file MEMORY.md before writing, so you can edit_file to update without losing existing content.\n"
+        "- Use get_current_time to know today's date before writing daily notes.\n"
+        "- Keep MEMORY.md concise and organized — summarize, don't dump raw conversation.\n"
+        "- You should proactively save memory without being asked. If the user tells you their name, preferences, or important facts, persist them immediately.\n");
 
     /* Bootstrap files */
     off = append_file(buf, size, off, MIMI_SOUL_FILE, "Personality");
