@@ -31,6 +31,9 @@
 #ifndef MIMI_SECRET_PROXY_PORT
 #define MIMI_SECRET_PROXY_PORT      ""
 #endif
+#ifndef MIMI_SECRET_PROXY_TYPE
+#define MIMI_SECRET_PROXY_TYPE      ""
+#endif
 #ifndef MIMI_SECRET_SEARCH_KEY
 #define MIMI_SECRET_SEARCH_KEY      ""
 #endif
